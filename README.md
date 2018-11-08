@@ -8,13 +8,13 @@ lightbox powered by [baguetteBox.js](https://github.com/feimosi/baguetteBox.js) 
 
 Clone this git repository into your `themes` folder (or add it as a submodule if you're already using git):
 
-```
+```sh
 git clone https://github.com/Schnouki/hugo-baguetteBox
 ```
 
 Now add this theme component to your `config.toml`:
 
-```
+```toml
 theme = ["hugo-baguetteBox", "main-theme"]
 ```
 
@@ -24,7 +24,7 @@ theme = ["hugo-baguetteBox", "main-theme"]
 In a post or page, you can add a gallery using the `{{< gallery >}}` shortcode, and images inside the gallery using the
 `{{< galimg >}}` shortcode:
 
-```
+```markdown
 {{< gallery >}}
   {{% galimg target="image01.png" title="This image has a title but no caption!" /%}}
   {{% galimg target="image02.png" %}}This image has a caption!{{% /galimg %}}
@@ -52,7 +52,7 @@ This component does *not* include a stylesheet for the gallery, you will need to
 
 The generated HTML is very simple:
 
-```
+```html
 <div class="gallery">
   <a href="/path/to/fullsize-image.jpg" data-caption="Image caption" title="Image title">
     <img src="/path/to/thumbnail.jpg alt="Image title" />
@@ -62,7 +62,7 @@ The generated HTML is very simple:
 
 Here is a sample CSS that works well with the [Minimo](https://github.com/MunifTanjim/minimo) theme:
 
-```
+```css
 .gallery {
     display: flex;
     flex-flow: row wrap;
