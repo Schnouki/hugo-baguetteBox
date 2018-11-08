@@ -1,0 +1,22 @@
+name = "baguetteBox"
+license = "MIT"
+licenselink = "https://github.com/Schnouki/hugo-baguetteBox/blob/master/LICENSE"
+description = "A theme component that provides an image gallery and lightbox powered by baguetteBox.js."
+homepage = "https://github.com/Schnouki/hugo-baguetteBox/#readme"
+tags = [
+  "component",
+  "gallery",
+  "lightbox"
+]
+features = [
+  "compoent",
+  "gallery",
+  "lightbox",
+  "shortcodes",
+  "baguetteBox.js"
+]
+min_version = "0.42"
+
+[author]
+  name = "Thomas Jost"
+  homepage = "https://schnouki.net/"
