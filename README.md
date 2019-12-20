@@ -9,13 +9,13 @@ lightbox powered by [baguetteBox.js](https://github.com/feimosi/baguetteBox.js) 
 Clone this git repository into your `themes` folder (or add it as a submodule if you're already using git):
 
 ```sh
-git clone https://github.com/Schnouki/hugo-baguetteBox
+git clone https://github.com/Schnouki/hugo-baguetteBox themes/baguettebox
 ```
 
 Now add this theme component to your `config.toml`:
 
 ```toml
-theme = ["hugo-baguetteBox", "main-theme"]
+theme = ["baguettebox", "main-theme"]
 ```
 
 

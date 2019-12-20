@@ -1,28 +1,39 @@
-{{- $img := .Page.Resources.GetMatch ( .Get "target" ) -}}
-{{- if .Get "thumb" -}}
-  {{- $.Scratch.Set "thumb" ( .Page.Resources.GetMatch ( .Get "thumb" ) ) -}}
-{{- else -}}
-  {{- $thumbMode := ( .Get "mode" ) | default "fill" -}}
-  {{- $thumbSize := ( .Get "size" ) | default "200x150 smart" -}}
-  {{- if eq $thumbMode "fill" -}}
-    {{- $.Scratch.Set "thumb" ( $img.Fill $thumbSize ) -}}
-  {{- else if eq $thumbMode "fit" -}}
-    {{- $.Scratch.Set "thumb" ( $img.Fit $thumbSize ) -}}
-  {{- else if eq $thumbMode "resize" -}}
-    {{- $.Scratch.Set "thumb" ( $img.Resize $thumbSize ) -}}
-  {{- else -}}
-    {{- errorf "Invalid thumbmail mode: must be one of fill, fit, or resize" -}}
-  {{- end -}}
+{{- $target := ( .Get 0 ) -}}
+{{- if .IsNamedParams -}}
+  {{- $target = ( .Get "target" ) -}}
 {{- end -}}
-{{- $thumb := $.Scratch.Get "thumb" -}}
-{{- $caption := trim .Inner " \n" -}}
-{{- $title := ( .Get "title" ) | default $caption -}}
+{{- $img := $.Page.Resources.GetMatch $target -}}
 
-<a href="{{ .Get "target" }}"
-  {{- with $caption }} data-caption="{{ . }}"{{ end -}}
-  {{- with $title }} title="{{ . }}"{{ end -}}
-  >
-  <img src="{{ $thumb.RelPermalink }}"
-    {{- with $title }} alt="{{ . }}"{{ end -}}
-  />
-</a>
+{{- if $img -}}
+
+  {{- $thumb := 0 -}}
+  {{- if .Get "thumb" -}}
+    {{- $thumb = ( $.Page.Resources.GetMatch ( .Get "thumb" ) ) -}}
+  {{- else -}}
+    {{- $thumbMode := ( .Get "mode" ) | default "fill" -}}
+    {{- $thumbSize := ( .Get "size" ) | default "200x150 smart" -}}
+    {{- if eq $thumbMode "fill" -}}
+      {{- $thumb = ( $img.Fill $thumbSize ) -}}
+    {{- else if eq $thumbMode "fit" -}}
+      {{- $thumb = ( $img.Fit $thumbSize ) -}}
+    {{- else if eq $thumbMode "resize" -}}
+      {{- $thumb = ( $img.Resize $thumbSize ) -}}
+    {{- else -}}
+      {{- errorf "Invalid thumbmail mode: must be one of fill, fit, or resize" -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $caption := trim .Inner " \n" -}}
+  {{- $title := ( .Get "title" ) | default $caption -}}
+
+  <a href="{{ $target }}"
+    {{- with $caption }} data-caption="{{ . }}"{{ end -}}
+    {{- with $title }} title="{{ . }}"{{ end -}}
+    >
+    <img src="{{ $thumb.RelPermalink }}"
+      {{- with $title }} alt="{{ . }}"{{ end -}}
+    />
+  </a>
+
+{{- else -}}
+  {{- errorf "galimg: image '%s' is nil!" $target -}}
+{{- end -}}
