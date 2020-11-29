@@ -1,4 +1,4 @@
-VERSION ?= 1.11.0
+VERSION ?= 1.11.1
 
 TARGETS = static/assets/css/baguetteBox.min.css static/assets/js/baguetteBox.min.js
 
