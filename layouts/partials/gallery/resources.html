@@ -1,0 +1,4 @@
+{{- $css := resources.Get "/baguetteBox/baguetteBox.min.css" | fingerprint -}}
+{{- $js := resources.Get "/baguetteBox/baguetteBox.min.js" | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}"/>
+<script async src="{{ $js.RelPermalink }}"></script>

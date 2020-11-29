@@ -1,11 +1,10 @@
 <div class="gallery">{{ .Inner }}</div>
 {{- if not (.Page.Scratch.Get "baguetteBoxLoaded") -}}
   {{- .Page.Scratch.Set "baguetteBoxLoaded" true -}}
-  <link rel="stylesheet" href="{{ "/assets/css/baguetteBox.min.css" | relURL }}"/>
-  <script async src="{{ "/assets/js/baguetteBox.min.js" | relURL }}"></script>
+  {{- partial "gallery/resources.html" . -}}
   <script type="text/javascript">
-    window.addEventListener('load', function() {
-      baguetteBox.run('.gallery');
+    window.addEventListener("load", function() {
+      baguetteBox.run(".gallery");
     });
   </script>
 {{- end -}}

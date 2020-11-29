@@ -82,3 +82,5 @@ Here is a sample CSS that works well with the [Minimo](https://github.com/MunifT
 
 This components includes [*baguetteBox.js*](https://github.com/feimosi/baguetteBox.js), which is *very* small (less that
 10 kB of JavaScript and 4 kB of CSS). It is only included on pages that need it, and has no external dependency at all.
+
+To customize how it is loaded, you can overload the `gallery/resources.html` partial template. This way you can for instance load it from a CDN (instead of using the bundled version), or disable [fingerprintint](https://gohugo.io/hugo-pipes/fingerprint/), or use Hugo Pipes to enable PostCSS or whatever you want.
